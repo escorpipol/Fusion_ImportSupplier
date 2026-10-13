@@ -1,0 +1,530 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Refresh" this:Refresh.in_Link="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/" this:Refresh.in_Name="Load File to Interface" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Link" Type="InArgument(x:String)" />
+    <x:Property Name="in_Name" Type="InArgument(x:String)" />
+    <x:Property Name="in_ProcessID" Type="InArgument(x:String)" />
+    <x:Property Name="out_Status" Type="OutArgument(x:String)" />
+    <x:Property Name="in_ExcelName" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1769,4546.000000000001</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Refresh_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Refresh" sap:VirtualizedContainerService.HintSize="1779,4481" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="GetSuccessTxt" />
+      <Variable x:TypeArguments="ui:UiElement" Name="ClickSuccess" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="Navigateto Scheduled Processes" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: NavigatetoScheduledProcess" sap:VirtualizedContainerService.HintSize="1717,4370" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence sap:VirtualizedContainerService.HintSize="1683,4121" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NSelectItem DelayAfter="3" DisplayName="Select Item 'Actions'" sap:VirtualizedContainerService.HintSize="1621,158" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Refresh" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="1">
+                  <x:String>Actions</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_afrLoop=3844572381198659&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_adf.ctrl-state=1b3t0hfjew_1072" DesignTimeRectangle="36, 555, 97, 36" DesignTimeScaleFactor="1.5" FriendlyName="'Actions'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aria-role='menuitem' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aria-role='menuitem' type='' tag='DIV' class='x1jr' aaname='' check:innerText='Actions' /&gt;" Guid="148c6b82-b86d-4242-b2ca-801b5172a8ee" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='15on0r1jo4' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[Not(GetSuccessTxt = &quot;Succeeded&quot; OR GetSuccessTxt = &quot;Error&quot;)]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1621,2915" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+              <ui:InterruptibleDoWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1587,2778" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NSelectItem DisplayName="Select Item 'Actions'" sap:VirtualizedContainerService.HintSize="1545,158" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Refresh" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" Version="V3">
+                    <uix:NSelectItem.Items>
+                      <scg:List x:TypeArguments="x:String" Capacity="1">
+                        <x:String>Actions</x:String>
+                      </scg:List>
+                    </uix:NSelectItem.Items>
+                    <uix:NSelectItem.Target>
+                      <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_afrLoop=3844572381198659&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_adf.ctrl-state=1b3t0hfjew_1072" DesignTimeRectangle="36, 555, 97, 36" DesignTimeScaleFactor="1.5" FriendlyName="'Actions'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aria-role='menuitem' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aria-role='menuitem' type='' tag='DIV' class='x1jr' aaname='' check:innerText='Actions' /&gt;" Guid="148c6b82-b86d-4242-b2ca-801b5172a8ee" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='15on0r1jo4' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NSelectItem.Target>
+                  </uix:NSelectItem>
+                  <If Condition="[in_Name = &quot;Load File to Interface&quot;]" sap:VirtualizedContainerService.HintSize="1545,2492" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="1511,1707" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1469,1619" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                          <TryCatch.Try>
+                            <Sequence sap:VirtualizedContainerService.HintSize="1431,1386" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <uix:NGetText DisplayName="Get Text 'Load File to Interface'" sap:VirtualizedContainerService.HintSize="1369,158" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="3" Version="V3">
+                                <uix:NGetText.Target>
+                                  <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=nc9jhxys4_5&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=38667687582698711" DesignTimeRectangle="39, 423, 118, 14" DesignTimeScaleFactor="1" FriendlyName="'Load File to Interface'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x1a' /&gt;" Guid="efba034e-f0e0-4863-9538-156dc9af0c86" ImageBase64="" InformativeScreenshot="8f13a949ecc959154880506c4414c71c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='kjs39du8n' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                </uix:NGetText.Target>
+                              </uix:NGetText>
+                              <Pick sap:VirtualizedContainerService.HintSize="1369,1077" sap2010:WorkflowViewState.IdRef="Pick_1">
+                                <PickBranch sap:VirtualizedContainerService.HintSize="609,1030" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+                                  <PickBranch.Trigger>
+                                    <uix:NGetText DisplayName="Get Text 'Warning'" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="5" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://fa-ewqc-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=yxslqqu1w_5&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=14181705082547765" DesignTimeRectangle="1214, 581, 66, 20" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Warning'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Warning' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x2f0' /&gt;" Guid="8f2957ea-4393-4aec-b68a-819f893b982d" ImageBase64="" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='llecquf3w' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                  </PickBranch.Trigger>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="559,596" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_ExcelName]" sap:VirtualizedContainerService.HintSize="497,362" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                                      <Assign x:Key="SupplierImportTemplate" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Assign x:Key="SupplierAddressImportTemplate" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Sequence x:Key="SupplierSiteImportTemplate" sap:VirtualizedContainerService.HintSize="496,392" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NGetText DisplayName="Get Text 'Transfer File'" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="NGetText_17" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="3" Version="V3">
+                                          <uix:NGetText.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://fa-ewqc-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=yxslqqu1w_5&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=14181705082547765" DesignTimeRectangle="58, 679, 108, 20" DesignTimeScaleFactor="1.5" FriendlyName="'Transfer File'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x1a' /&gt;" Guid="2dc9b727-b354-4350-af06-72322072c92e" ImageBase64="" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='llecquf3w' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NGetText.Target>
+                                        </uix:NGetText>
+                                        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </Sequence>
+                                      <Assign x:Key="SupplierSiteAssignmentsImportTemplate" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <Sequence x:Key="SupplierBankAccountImportTemplate" sap:VirtualizedContainerService.HintSize="496,392" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <uix:NGetText DisplayName="Get Text 'Load Interface'" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="NGetText_18" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="3" Version="V3">
+                                          <uix:NGetText.Target>
+                                            <uix:TargetAnchorable BrowserURL="https://fa-ewqc-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=yxslqqu1w_5&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=14181705082547765" DesignTimeRectangle="58, 725, 239, 20" DesignTimeScaleFactor="1.5" FriendlyName="'Load Interface'" FullSelectorArgument="&lt;webctrl tableRow='5' tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x1a' /&gt;" Guid="2c97b4a0-bf01-4d2c-bbbf-6dc790b2d66e" ImageBase64="" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='llecquf3w' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                                              <uix:TargetAnchorable.Anchors>
+                                                <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                                              </uix:TargetAnchorable.Anchors>
+                                            </uix:TargetAnchorable>
+                                          </uix:NGetText.Target>
+                                        </uix:NGetText>
+                                        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </Sequence>
+                                    </Switch>
+                                    <Assign sap:VirtualizedContainerService.HintSize="497,83" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">Warning</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </PickBranch>
+                                <PickBranch sap:VirtualizedContainerService.HintSize="586,1030" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+                                  <PickBranch.Trigger>
+                                    <uix:NGetText DisplayName="Get Text 'Succeeded'" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NGetText_15" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="3" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=1dqo2r2p1i_5" DesignTimeRectangle="1465, 423, 60, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Succeeded'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Succeeded' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x2f0' /&gt;" Guid="5c20401a-e857-4ba6-9731-1e12aa176ad9" ImageBase64="" InformativeScreenshot="80b99f4fa61ce15c96b3fc1f1244c7f9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='knees4lwj' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                                      </uix:NGetText.Target>
+                                    </uix:NGetText>
+                                  </PickBranch.Trigger>
+                                  <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_ExcelName]" sap:VirtualizedContainerService.HintSize="536,671" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                                    <Assign x:Key="SupplierImportTemplate" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign x:Key="SupplierAddressImportTemplate" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Sequence x:Key="SupplierSiteImportTemplate" sap:VirtualizedContainerService.HintSize="496,392" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NGetText DisplayName="Get Text 'Transfer File'" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="NGetText_16" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="3" Version="V3">
+                                        <uix:NGetText.Target>
+                                          <uix:TargetAnchorable BrowserURL="https://fa-ewqc-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=yxslqqu1w_5&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=14181705082547765" DesignTimeRectangle="58, 679, 108, 20" DesignTimeScaleFactor="1.5" FriendlyName="'Transfer File'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x1a' /&gt;" Guid="2dc9b727-b354-4350-af06-72322072c92e" ImageBase64="" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='llecquf3w' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                                            <uix:TargetAnchorable.Anchors>
+                                              <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                                            </uix:TargetAnchorable.Anchors>
+                                          </uix:TargetAnchorable>
+                                        </uix:NGetText.Target>
+                                      </uix:NGetText>
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                    <Assign x:Key="SupplierSiteAssignmentsImportTemplate" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Sequence x:Key="SupplierBankAccountImportTemplate" sap:VirtualizedContainerService.HintSize="496,392" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NGetText DisplayName="Get Text 'Load Interface'" sap:VirtualizedContainerService.HintSize="434,158" sap2010:WorkflowViewState.IdRef="NGetText_19" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="3" Version="V3">
+                                        <uix:NGetText.Target>
+                                          <uix:TargetAnchorable BrowserURL="https://fa-ewqc-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=yxslqqu1w_5&amp;fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=14181705082547765" DesignTimeRectangle="58, 725, 239, 20" DesignTimeScaleFactor="1.5" FriendlyName="'Load Interface'" FullSelectorArgument="&lt;webctrl tableRow='5' tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='x1a' /&gt;" Guid="2c97b4a0-bf01-4d2c-bbbf-6dc790b2d66e" ImageBase64="" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='llecquf3w' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive">
+                                            <uix:TargetAnchorable.Anchors>
+                                              <scg:List x:TypeArguments="uix:ITarget" Capacity="0" />
+                                            </uix:TargetAnchorable.Anchors>
+                                          </uix:TargetAnchorable>
+                                        </uix:NGetText.Target>
+                                      </uix:NGetText>
+                                      <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">Succeeded</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </Sequence>
+                                  </Switch>
+                                </PickBranch>
+                              </Pick>
+                            </Sequence>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1435,22" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">Retry</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="480,602" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,391" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                          <TryCatch.Try>
+                            <uix:NGetText DisplayName="Get Success Txt" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NGetText_3" OutUiElement="[ClickSuccess]" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" TextString="[GetSuccessTxt]" Timeout="1" Version="V3">
+                              <uix:NGetText.Target>
+                                <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=13zsvvyd35_113" DesignTimeRectangle="1207, 429, 242, 46" DesignTimeScaleFactor="1.5" FriendlyName="'Running'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='xen' tag='TD' aaname='' /&gt;" Guid="d5b232fb-f773-4e3f-86a2-0cd42e2b3d0a" ImageBase64="" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='*' title='*' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                                      <uix:Target DesignTimeRectangle="50, 429, 975, 46" FriendlyName="'Transfer Transactions'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='xen' aaname='' check:innerText='{0}' /&gt;&quot;, in_Name)]" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAA9MAAAAyCAYAAABf/Yj/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAA3NSURBVHhe7d3niyXFGoBx/ycxIOaACRNizmBmxYSoiIoZFT/oqqgYUBTDsmLAiIIuiDnr6gfXxbSmddVVF8XQ9z7lvHNr6laf7t4z48wZnx8Us6dPd3V1VZ2l3lPVfTZp/mvl6jX8kSRJkiRJPRhMS5IkSZI00CYE0iaTyWQymUwmk8lkMplGp2/WrZ/+tzPTkiRJkiQNZDAtSZIkSdJABtOSJEmSJA1kMC1JkiRJ0kAG05IkSZIkDWQwLUmSJEnSQAbTkiRJkiQNZDAtSZIkSdJABtOSJEmSJA1kMC1JkiRJ0kAG05IkSZIkDWQwLUmSJEnSQAbTkiRJkiQNZDAtSZIkSdJABtOSJEmSJA00K8H0nXfe2Wy66aad6cILL5w6YmH466+/mmXLljW77LJLKt9xxx3X/Pzzz1Pvzo5JrZvZ9OeffzZPPvlks3z58qktTfP888+n6+bvQvPCCy80e+21Vyrf3nvv3Xz55ZdT7ywM3377bbPPPvvM6D+RNttss2bfffdt7r///ubXX3+dOmJ+bEwbz0e/qPXP2cD/L6+//npzyimnNNtss026Lv6efvrpzapVq6b2mn2T9nmTJEmaVLMSTBN8XHbZZdNpyZIlaeDG33z7Qw89NHXEwvD111+noOmII45oHn/88ea1115r/vjjj6l3Z8ek1s1siuCPLxbCQh3c//LLL+lLFYJoghHab76D0lLU5/HHH98888wzM9IDDzzQHHLIIalur7nmmhTQzZeNaeP56Be1/jku+szll1+evtygPWgX2ue6665rdt5552arrbZqnn322am9Z9ckfd4kSZIm2Zws856UgdvKlSubHXbYYVYH0V3+jYPauQhW5kqUdSGvFOgq408//ZQC7T322KP5/PPPp7aqzWz3T77AuOOOO1IgzV9minNr165tjjnmmGa33XabkxnqSfq8SZIkTbJ/PJhmgMdAj2Wo22+/fVr2yJJEvPnmm2lWkFkbjue98847Lw0+QxzPLDIBw+abb572P/fcc2fs9/vvvzd33313s/vuu8/I66uvvkrvkw/b8xTlZak3s3qxNJPZa8pLnmHUdYwyCXUT+pwTzOYuXbp0erk8f3nN9vjCgu0k/s22Wj1Q78zc1fIJ7E8eK1asSNdF2bhOrveTTz6Z2uvvgOapp55KS54JatjvhBNOGBm8RJnyRJ3GOZldpC+Q180335yO2ZgyR7vQx9iP7bGs/MADD0xLg0fpE/Dfdttt03UdmC296667RpYVvG5rz9Anr6hP/n788cfNrrvu2txwww1T7/4PdczxH3300YxjUNZdW3uDfnnxxRdP78P+HMfxkV+prX+iT9vWfPHFF6k9Wd7dtqqBFQ+sfshnp/ucr6tf9/28zXW9SpIk/RvMSzDNIJCljgR09957b/PZZ581b7zxRrPtttumJdcseWbZ9VlnnZX2PeOMM6YHpRzPoI7jL7jggrQffxnkEejFMu3Y79JLL02Dz1tuuSUN/pgRYuaOwT37bL311s3555+flmCy7Jt02GGHpfxvvfXWdGzkz3LsCKjbrqPLJNQN+p6T/U8++eR0jvKcV1xxRbNu3brmkUceSYEB9fzcc881P/744//VQ+RDua666qoZ9c72KBf7b7nllukaWSrP+a6++uoU6OflJ0ghL8rMPvfdd1+aqSXIIdipoe0ffPDBVFaCCvoE/YRzct2c4/rrr09B9fvvv7/RZX700UdTe5AngRBfatxzzz29yoiuYJp2Pvvss1PwSvlBQHbqqaema6C+uLaot7yscU1t7UneffPK2zjKdNRRR6X2D+R14oknNqeddlrz22+/zTgGZd21tXeUO8pEn6Xv7rjjjun4yK9EWWr9M/Lratsaysg18Levvufr6tdt1/NP16skSdK/wbwE07zHgC937bXXpnsL89lRBuAEHQQOBBCI41k+GfeD8veiiy6a3i8G6AwmYx9wTgaeMfMUszjkGZhx3HPPPZvVq1dPbfnbY489lmaL33777fS67Tq6TErd9D0ng/4tttgi1U8g3xtvvDHNsn766adpX47J67msB2bjGZyTXyAfykX+sT2O45rKlQK0ZZSfQJNZda43vPrqqynIqNV9iLLmgWqck1nDvM7GKTMBDoElZX733XfTNhDUEGQzc9mmVsZA8EP7E3Axgxjnoyz031deeSW9DnxpwvYoK3+72rNvXnHdUd9s5wsaVjyE+AxG4FkeU6s7lO1NW3DN+UxvBIJ5fjW1/tm3bWtYFUA98IVLX33P16df9/m8/RP1KkmS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" SearchSteps="FuzzySelector" />
+                                      <uix:Target DesignTimeRectangle="1025, 429, 182, 46" FriendlyName="'14816529'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='xen' tag='TD' aaname='' check:innerText='{0}' /&gt;&quot;, in_ProcessID)]" ImageBase64="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" SearchSteps="FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NGetText.Target>
+                            </uix:NGetText>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[GetSuccessTxt]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">Retry</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                        <Assign sap:VirtualizedContainerService.HintSize="438,83" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_Status]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[GetSuccessTxt]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:InterruptibleDoWhile.Body>
+            </ui:InterruptibleDoWhile>
+            <uix:NHighlight Color="Green" ContinueOnError="True" DisplayName="Highlight" HighlightTime="5" sap:VirtualizedContainerService.HintSize="1621,139" sap2010:WorkflowViewState.IdRef="NHighlight_1" InUiElement="[ClickSuccess]" Timeout="3" Version="V3" />
+            <If Condition="[in_Name = &quot;Load File to Interface&quot;]" sap:VirtualizedContainerService.HintSize="1621,674" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,246" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="True" DisplayName="Click 'Result" sap:VirtualizedContainerService.HintSize="334,158" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" Timeout="3" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=1attciquc5_5" DesignTimeRectangle="39, 423, 118, 14" DesignTimeScaleFactor="1" FriendlyName="'Load File to Interface'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Load File to Interface' type='' tag='SPAN' class='x1a' check:innerText='Load File to Interface' /&gt;" Guid="d79067cb-5793-4a78-b451-2e03767cf18f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHoAAAASCAYAAACU/srTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJJSURBVGhD7VbbbcMwDOxOniYeo79GvjpJ4EkCZJIAmUOVSD2OEiUbrgMUka4w4AcfdzxJ6ZcZ6ALD6E4wjO4Ew+hOsGH0wyzTZJa7fzwb98VM02K75OC+U35dVvOyf+vFc3quZlbzGziSQ3xmsz79YxV740o8rqjxfPxrozf7fozRbvEeWyB78TejyShtJXJe/HaFsdKg+f1yPWJ0Y0dX+QQgL58HfHQuDtJAt/tmyz3mwUnDdWQsv7M5N8+Ies5mpvhv8xPzgmasZa/qbIHvho7jRvvCghgZyve5KBbO9cI3HoI23EZfX78wWvRBPhkwR+NTXSC5edg3cJVxr9uc6mGcyHEATRZUP3LHWcg4qk9xcl6ajuNGu92DxZrHsBcvhmyRP0dw37ii6QpxutFiqA45vwDsqfJJRiWABvckjMDhYxy/jwvewuXRc9FHGiih6xXIZ6/EHTa6GCwWxyOULi9qByFGvW9NOPERPd2l1C54Yow0NKE0OhnYNrrg5BZIoTszmr7LPPpW8PUo5u0uqeMNOzrPAfG5wEJwQKNvy2jtqM6BPVU+5xqtaih0Yyzfq/WLPI/cCwVv+I2WObzTpPgggo5AjXirb014ZhLV3jq6fR/BRx0YGshx20Z77bEe9CoMwxpyRmG3pvppLqm+8j6b6y6j82MhFBRHBgyIG/H7+fYAERZ+gfC31dY/yWgH5KPWdQia/Hfg087ZYzTf1/7rjidO02gL1GFzRL8aX/E+9Q/YMHrgUzCM7gTD6E4wjO4Ew+guYMwvi7pHNSd8+5gAAAAASUVORK5CYII=" InformativeScreenshot="fd884b29be12ec3736b3b8951796718d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='mpqikc6wo' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" ContinueOnError="True" DisplayName="Click 'Result" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a3cf0b83-c7a1-4062-b604-db9ac89a5dde" Timeout="3" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://fa-ewqc-dev4-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseWelcome?_adf.ctrl-state=13zsvvyd35_113" DesignTimeRectangle="29, 403, 1440, 25" DesignTimeScaleFactor="0.800000011920929" FriendlyName="'Transfer Transactions'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='xen' aaname='' check:innerText='{0}' /&gt;&quot;, in_Name)]" Guid="ba60e35c-0ea8-4ac0-8481-bd6a1a6bf370" ImageBase64="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" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='18pb0swis6' title='Monitor Processes - Scheduled Processes - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="1469, 403, 97, 25" FriendlyName="'14816529'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='xen' tag='TD' aaname='' check:innerText='{0}' /&gt;&quot;, in_ProcessID)]" ImageBase64="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" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC3SURBVDhPY3gro/KfEjycDPjg7vv/17ET/wmBnzt2/X9vYY9qAEjzv48fwQr+Pn4CNggbhqkB0e+0jBAGgCRB4MeqtXCTsWGQJpALkNWCDQABkKnIinFhkPOR1cMNALkCWSE+DAMgNtwAEEAOHFz4U2g0WO2fK9fAfLAB32fPhwuCFCBrQMafkzPhAfm1oQUsBjYAFDggzcQC5MAGGwDDXwrLUKINHYNiAKQGWQ+KAeTggTZA5T8AeeKZe/mBYcQAAAAASUVORK5CYII=" InformativeScreenshot="19d042a76b01cc044fbea81e6eddc577.jpg" Selector="&lt;html app='chrome.exe' /&gt;" Title="Sign In" Url="[in_Link]" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
